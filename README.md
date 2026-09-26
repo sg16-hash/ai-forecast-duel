@@ -1,6 +1,6 @@
-# Claude vs ChatGPT：MU / SNDK 每日预测对决
+# Claude vs ChatGPT：MU / SNDK / INTC 每日预测对决
 
-每个美股交易日，Claude 和 ChatGPT 在开盘前用**同一份提示词**独立预测美光（MU）和闪迪（SNDK）当天收盘涨跌，收盘后自动打分，每周六由 Claude 写一份裁判周报。全部在 GitHub Actions 上运行，不需要你开电脑。
+每个美股交易日，Claude 和 ChatGPT 在开盘前用**同一份提示词**独立预测美光（MU）、闪迪（SNDK）和英特尔（INTC）当天收盘涨跌，收盘后自动打分，每周六由 Claude 写一份裁判周报。全部在 GitHub Actions 上运行，不需要你开电脑。
 
 📊 **最新成绩：[reports/latest.md](reports/latest.md)** · 周报：[reports/weekly/](reports/weekly/)
 
@@ -30,7 +30,7 @@
    |---|---|---|
    | `CLAUDE_MODEL` | `claude-opus-5-5` | Claude 使用的模型 |
    | `OPENAI_MODEL` | `gpt-5` | 换成你想比的 ChatGPT 模型 |
-   | `TICKERS` | `MU,SNDK` | 逗号分隔，可加别的标的 |
+   | `TICKERS` | `MU,SNDK,INTC` | 逗号分隔，可加别的标的 |
    | `PROMPT_VERSION` | `v1` | 对应 `prompts/prompt_v1.md` |
 
 5. **允许 Actions 写仓库**：Settings → Actions → General → Workflow permissions → 选 **Read and write permissions** → Save。

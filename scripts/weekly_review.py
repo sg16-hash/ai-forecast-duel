@@ -16,7 +16,7 @@ PRED_CSV = ROOT / "data" / "predictions.csv"
 REPORT_MD = ROOT / "reports" / "latest.md"
 OUT_DIR = ROOT / "reports" / "weekly"
 
-PROMPT = """你是这场预测比赛的中立裁判。参赛者是 Claude 和 ChatGPT，每个交易日开盘前各自预测 MU 和 SNDK 当天收盘涨跌。
+PROMPT = """你是这场预测比赛的中立裁判。参赛者是 Claude 和 ChatGPT，每个交易日开盘前各自预测 MU、SNDK 和 INTC 当天收盘涨跌。
 你本身也是 Claude，所以必须格外注意不偏袒任何一方：只依据下面的数字和理由下结论，数据不足就明说"还看不出来"。
 
 请用中文写一份周报（600 字以内），包含：

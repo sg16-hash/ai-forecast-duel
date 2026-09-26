@@ -22,7 +22,7 @@ PRED_CSV = DATA_DIR / "predictions.csv"
 
 PROMPT_VERSION = os.getenv("PROMPT_VERSION") or "v1"
 PROMPT_FILE = ROOT / "prompts" / f"prompt_{PROMPT_VERSION}.md"
-TICKERS = [t.strip().upper() for t in (os.getenv("TICKERS") or "MU,SNDK").split(",") if t.strip()]
+TICKERS = [t.strip().upper() for t in (os.getenv("TICKERS") or "MU,SNDK,INTC").split(",") if t.strip()]
 ET = ZoneInfo("America/New_York")
 
 FIELDS = ["date", "model", "model_version", "ticker", "direction", "p_up",
