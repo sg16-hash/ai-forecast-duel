@@ -1,0 +1,6 @@
+anthropic>=0.40
+openai>=1.60
+pandas>=2.2
+yfinance>=0.2.50
+pandas_market_calendars>=4.4
+matplotlib>=3.8

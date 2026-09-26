@@ -1,0 +1,42 @@
+# 收盘后（北京时间约 06:30）打分并更新报告；每周六额外生成 Claude 裁判周报
+name: score
+
+on:
+  schedule:
+    - cron: "30 22 * * 1-5"   # UTC 22:30，美东收盘后
+    - cron: "30 2 * * 2-6"    # 备用
+    - cron: "0 3 * * 6"       # 周六：打分 + 周报
+  workflow_dispatch:
+    inputs:
+      weekly:
+        description: "同时生成周报"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-writes
+  cancel-in-progress: false
+
+jobs:
+  score:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python scripts/score.py
+      - run: python scripts/report.py
+      - name: 周报
+        if: github.event.schedule == '0 3 * * 6' || inputs.weekly
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+        run: python scripts/weekly_review.py
+      - run: 'bash scripts/commit.sh "score $(date -u +%F)"'

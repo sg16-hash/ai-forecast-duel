@@ -1,0 +1,45 @@
+# 每个美股交易日开盘前（北京时间约 20:00）让两个模型出预测
+name: predict
+
+on:
+  schedule:
+    - cron: "0 12 * * 1-5"    # UTC 12:00 = 夏令时美东 8:00 / 冬令时 7:00
+    - cron: "45 12 * * 1-5"   # 备用：GitHub 定时偶尔延迟或漏跑，已记录的会自动跳过
+  workflow_dispatch:
+    inputs:
+      force_date:
+        description: "手动补跑某天（YYYY-MM-DD），留空为今天。补跑的预测不代表开盘前，仅用于测试"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: data-writes
+  cancel-in-progress: false
+
+jobs:
+  predict:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: 生成预测
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL }}
+          OPENAI_SEARCH_TOOL: ${{ vars.OPENAI_SEARCH_TOOL }}
+          TICKERS: ${{ vars.TICKERS }}
+          PROMPT_VERSION: ${{ vars.PROMPT_VERSION }}
+          FORCE_DATE: ${{ inputs.force_date }}
+        run: python scripts/predict.py
+      - name: 提交（即使部分失败也保存已成功的那一方）
+        if: always()
+        run: 'bash scripts/commit.sh "predict $(date -u +%F)"'
