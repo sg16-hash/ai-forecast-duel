@@ -1,0 +1,7 @@
+date,model,model_version,ticker,direction,p_up,pct_change,reason,created_utc,late,prompt_version
+2026-09-29,chatgpt,chatgpt-app(manual),MU,up,0.6,1.2,预计高开后可能回吐部分盘前涨幅，财报前资金承接；区间-1.3%~+3.5%，置信度中,2026-09-29T12:12:33+00:00,0,manual
+2026-09-29,chatgpt,chatgpt-app(manual),SNDK,up,0.55,0.8,正开后波动大，易冲高回落，基准情景小幅收涨；区间-2.0%~+3.0%，置信度中低,2026-09-29T12:12:33+00:00,0,manual
+2026-09-29,chatgpt,chatgpt-app(manual),INTC,up,0.5,0.3,判断:平。昨日大跌后技术性反弹为主但缺少新催化；区间-2.0%~+2.2%，置信度中低。注:截图中心值被遮挡，读作+0.3%,2026-09-29T12:12:33+00:00,0,manual
+2026-09-29,claude,claude-opus-5-5(manual),MU,up,0.6,1.0,9/30财报前资金抢跑，盘前+1.4~1.7%，高开后有回吐风险但财报前dip有承接。注:本条在看到ChatGPT截图后作出,2026-09-29T12:12:33+00:00,0,manual
+2026-09-29,claude,claude-opus-5-5(manual),SNDK,up,0.58,1.0,上次MU财报次日SNDK+22%，财报前同步抢跑；弹性大于MU。注:看到ChatGPT截图后作出,2026-09-29T12:12:33+00:00,0,manual
+2026-09-29,claude,claude-opus-5-5(manual),INTC,down,0.48,-0.3,昨日-5.8%(Apple进一步去Intel化)，盘前+0.8%仅技术反弹，无新催化，资金流向财报前的存储股，倾向冲高回落。注:看到ChatGPT截图后作出,2026-09-29T12:12:33+00:00,0,manual
