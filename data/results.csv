@@ -1,0 +1,7 @@
+date,model,ticker,direction,p_up,pct_change,actual_pct,close,actual_up,hit,brier,abs_err,late,prompt_version,model_version
+2026-09-29,chatgpt,INTC,up,0.5,0.3,-0.086,115.93,0,0,0.25,0.386,0,manual,chatgpt-app(manual)
+2026-09-29,claude,INTC,down,0.48,-0.3,-0.086,115.93,0,1,0.2304,0.214,0,manual,claude-opus-5-5(manual)
+2026-09-29,chatgpt,MU,up,0.6,1.2,1.053,1065.08,1,1,0.16,0.147,0,manual,chatgpt-app(manual)
+2026-09-29,claude,MU,up,0.6,1.0,1.053,1065.08,1,1,0.16,0.053,0,manual,claude-opus-5-5(manual)
+2026-09-29,chatgpt,SNDK,up,0.55,0.8,0.985,1729.76,1,1,0.2025,0.185,0,manual,chatgpt-app(manual)
+2026-09-29,claude,SNDK,up,0.58,1.0,0.985,1729.76,1,1,0.1764,0.015,0,manual,claude-opus-5-5(manual)
